@@ -6,3 +6,6 @@
 
 *****
 可以使用继承IMVFlexibleTableView来全局设置刷新和加载更更多样式
+![image](https://github.com/inmovation/IMVFlexibleTableView/blob/master/custom.gif?raw=true)
+
+可在demo中查看
