@@ -18,7 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = NO;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -64,6 +64,13 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    NSLog(@"%@", NSStringFromUIEdgeInsets(_tableView.contentInset));
+}
+
+
 - (void)loadData{
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

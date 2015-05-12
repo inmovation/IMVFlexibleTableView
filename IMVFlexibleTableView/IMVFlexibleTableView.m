@@ -28,6 +28,7 @@
 @implementation IMVFlexibleTableView{
     CGFloat orignContentOffsetY;
     CGFloat orignContentInsetTop;
+    CGFloat orignContentInsetBottom;
     BOOL needDetectTopRefreshViewFrame;
 }
 @synthesize topRefreshView = _topRefreshView;
@@ -178,7 +179,7 @@ CGFloat kPRAnimationDuration = 0.2;
             }
             
             [UIView animateWithDuration:kPRAnimationDuration animations:^{
-                self.contentInset = UIEdgeInsetsMake(orignContentInsetTop, 0, kPRLoadViewHeight, 0);
+                self.contentInset = UIEdgeInsetsMake(orignContentInsetTop, 0, kPRLoadViewHeight + orignContentInsetBottom, 0);
             }];
         }
         
@@ -198,7 +199,7 @@ CGFloat kPRAnimationDuration = 0.2;
     }
     
     [UIView animateWithDuration:kPRAnimationDuration animations:^{
-        self.contentInset = UIEdgeInsetsMake(kPRRefreshViewHeight + orignContentInsetTop, 0, 0, 0);
+        self.contentInset = UIEdgeInsetsMake(kPRRefreshViewHeight + orignContentInsetTop, 0, orignContentInsetBottom, 0);
     } completion:nil];
     
 }
@@ -210,14 +211,14 @@ CGFloat kPRAnimationDuration = 0.2;
         _loadMoreView.loadState = LoadStateNormal;
 
     }else if (_loadMoreView.loadState == LoadStateReachEnd){
-        self.contentInset = UIEdgeInsetsMake(orignContentInsetTop, 0, 0, 0);
+        self.contentInset = UIEdgeInsetsMake(orignContentInsetTop, 0, orignContentInsetBottom, 0);
     }
     
     if (_topRefreshView.refreshState == PRStateRefreshing) {
         _topRefreshView.refreshState = PRStatePullToRefresh;
 
         [UIView animateWithDuration:kPRAnimationDuration animations:^{
-            self.contentInset = UIEdgeInsetsMake(orignContentInsetTop, 0, 0, 0);
+            self.contentInset = UIEdgeInsetsMake(orignContentInsetTop, 0, orignContentInsetBottom, 0);
         } completion:nil];
     }
 }
@@ -250,6 +251,7 @@ CGFloat kPRAnimationDuration = 0.2;
             if (needDetectTopRefreshViewFrame) {
                 orignContentInsetTop = self.contentInset.top;
                 orignContentOffsetY = self.contentOffset.y;
+                orignContentInsetBottom = self.contentInset.bottom;
                 _topRefreshView.frame = CGRectMake(0, orignContentInsetTop, _topRefreshView.frame.size.width, _topRefreshView.frame.size.height);
             }
         }
