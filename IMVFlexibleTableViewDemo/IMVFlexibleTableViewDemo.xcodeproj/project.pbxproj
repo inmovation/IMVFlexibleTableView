@@ -489,6 +489,7 @@
 				3668FCC81AF6F9BE0015CBF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3668FCC91AF6F9BE0015CBF2 /* Build configuration list for PBXNativeTarget "IMVFlexibleTableViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +498,7 @@
 				3668FCCB1AF6F9BE0015CBF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

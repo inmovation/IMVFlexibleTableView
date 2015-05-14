@@ -44,6 +44,7 @@
     if (_loadState == loadState) {
         return;
     }
+    //由于使用了set方法,需要把loadState赋值给_loadState,子类没办法使用_loadState而用self.loadState又会重复调用set方法,所以在子类调用super方法来赋值
     _loadState = loadState;
     if ([NSStringFromClass([self class]) isEqual:@"IMVBaseLoadMoreView"]) {
         switch (_loadState) {

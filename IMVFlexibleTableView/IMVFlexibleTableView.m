@@ -52,6 +52,7 @@ CGFloat kPRAnimationDuration = 0.2;
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style pullRefreshType:(PullRefreshType)prType{
     self = [super initWithFrame:frame style:style];
     if (self) {
+
         needDetectTopRefreshViewFrame = YES;
         self.prType = prType;
         [self addObserver];
@@ -93,7 +94,8 @@ CGFloat kPRAnimationDuration = 0.2;
 - (void)addObserver{
     [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kContentInset options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    [self addObserver:self forKeyPath:kContentSize options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kContentSize options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+
 
 }
 
@@ -168,9 +170,17 @@ CGFloat kPRAnimationDuration = 0.2;
             _topRefreshView.progress = fabs(offset.y) / kPRRefreshViewHeight;
         }
         
+        if (offset.y >= 0) {
+            _topRefreshView.hidden = YES;
+        }else{
+            _topRefreshView.hidden = NO;
+        }
+        
         //3.bottomLoadView will appear
         
         float yMargin = self.contentOffset.y + size.height - contentSize.height;
+        NSLog(@"%@", NSStringFromCGPoint(self.contentOffset));
+
         if (yMargin > 10 && (_prType == PRTypeBottomLoad || _prType == PRTypeTopRefreshBottomLoad) && !_reachedEnd) {
             
             _loadMoreView.loadState = LoadStateLoading;
@@ -270,6 +280,7 @@ CGFloat kPRAnimationDuration = 0.2;
     [self removeObserver:self forKeyPath:kContentOffset];
     [self removeObserver:self forKeyPath:kContentInset];
     [self removeObserver:self forKeyPath:kContentSize];
+
 }
 
 @end

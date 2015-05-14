@@ -34,7 +34,7 @@ NSString* kRotationAnimation = @"RotationAnimation";
 {
     self = [super initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60)];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
         [self setup];
     }
     return self;
@@ -53,9 +53,11 @@ NSString* kRotationAnimation = @"RotationAnimation";
         
         CALayer *layer = [self createComponentLayer];
         layer.transform = CATransform3DMakeRotation(M_PI / 6 * i, 0, 0, 1);
+        layer.hidden = YES;
         [_containerLayer addSublayer:layer];
         [_componetLayers addObject:layer];
     }
+
 }
 
 - (UIColor *)tintColor{

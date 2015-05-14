@@ -8,6 +8,8 @@
 
 #import "IMVBaseTopRefreshView.h"
 
+
 @interface CustomTopRefreshView : IMVBaseTopRefreshView
+
 
 @end

@@ -42,7 +42,7 @@
     
     page = [Page new];
     page.pageNum = 0;
-    page.pageSize = 30;
+    page.pageSize = 20;
     
     __weak DefaultStyleViewController *wkSelf = self;
     _tableView.refreshBlock = ^(void){
@@ -60,6 +60,7 @@
     for (int i=0; i<page.pageSize; i++) {
         [_localArray addObject:[NSString stringWithFormat:@"%@", @(i + page.pageNum * page.pageSize)]];
     }
+    [_localArray removeAllObjects];
     page.pageNum++;
     
 }
@@ -68,8 +69,16 @@
     [super viewWillAppear:animated];
     
     NSLog(@"%@", NSStringFromUIEdgeInsets(_tableView.contentInset));
+    NSLog(@"%@", NSStringFromCGRect(_tableView.frame));
+
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    NSLog(@"%@", NSStringFromCGRect(_tableView.loadMoreView.frame));
+
+}
 
 - (void)loadData{
     
@@ -83,7 +92,7 @@
             [_localArray addObject:[NSString stringWithFormat:@"%@", @(i + page.pageNum * page.pageSize)]];
         }
         
-        if (page.pageNum == 2) {
+        if (page.pageNum == 1) {
             _tableView.reachedEnd = YES;
         }
         page.pageNum++;
