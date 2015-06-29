@@ -62,7 +62,7 @@ NSString* kRotationAnimation = @"RotationAnimation";
 
 - (UIColor *)tintColor{
     if (!_tintColor) {
-        _tintColor = [UIColor redColor];
+        _tintColor = [UIColor grayColor];
     }
     return _tintColor;
 }

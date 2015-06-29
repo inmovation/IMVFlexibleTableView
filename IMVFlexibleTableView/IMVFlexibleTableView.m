@@ -179,7 +179,6 @@ CGFloat kPRAnimationDuration = 0.2;
         //3.bottomLoadView will appear
         
         float yMargin = self.contentOffset.y + size.height - contentSize.height;
-        NSLog(@"%@", NSStringFromCGPoint(self.contentOffset));
 
         if (yMargin > 10 && (_prType == PRTypeBottomLoad || _prType == PRTypeTopRefreshBottomLoad) && !_reachedEnd) {
             

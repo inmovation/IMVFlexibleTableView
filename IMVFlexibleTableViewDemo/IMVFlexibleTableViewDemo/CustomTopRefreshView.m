@@ -18,7 +18,6 @@
 
 
 - (void)setup{
-    
     _ovalShapeLayer = [[CAShapeLayer alloc] init];
     _ovalShapeLayer.strokeColor = [UIColor grayColor].CGColor;
     _ovalShapeLayer.fillColor = [UIColor clearColor].CGColor;
@@ -33,8 +32,6 @@
     _ovalShapeLayer.strokeEnd = progress;
     _ovalShapeLayer.opacity = progress;
     _ovalShapeLayer.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.frame.size.width/2 - 20, self.frame.size.height/2 - 20 - (60 - progress*60), 40, 40)].CGPath;
-
-
 }
 
 - (void)setRefreshState:(PRState)refreshState{

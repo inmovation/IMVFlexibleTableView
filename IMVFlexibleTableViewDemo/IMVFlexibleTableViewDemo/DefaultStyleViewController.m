@@ -32,8 +32,8 @@
     self.navigationItem.title = @"default style";
     
     _tableView = [[IMVFlexibleTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain pullRefreshType:PRTypeTopRefreshBottomLoad];
-    _tableView.topRefreshView.tintColor = [UIColor grayColor];
-    _tableView.loadMoreView.tintColor = [UIColor grayColor];
+//    _tableView.topRefreshView.tintColor = [UIColor grayColor];
+//    _tableView.loadMoreView.tintColor = [UIColor grayColor];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.backgroundColor = [UIColor redColor];
